@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "cdbf2148-676b-4952-b91d-c7f64f02e422",
+		"name": "POC Camunda Interchange API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create diagram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/api/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"api",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update diagram",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/api/update?fileName=HelloCamunda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"api",
+						"update"
+					],
+					"query": [
+						{
+							"key": "fileName",
+							"value": "HelloCamunda"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deploy diagram",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"type": "file",
+							"src": "/D:/FreelancerHiringProcess.bpmn"
+						},
+						{
+							"key": "deployment-name",
+							"value": "FreelancerHiringProcess",
+							"type": "text"
+						},
+						{
+							"key": "definiton-name",
+							"value": "Diagram_hello",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/api/deploy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"api",
+						"deploy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Process API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Description\":\"okay Done\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/api/startProcess/key/FreelancerHiringProcess/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"api",
+						"startProcess",
+						"key",
+						"FreelancerHiringProcess",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Claim Task API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/api/approval-process-claim/040e84f0-709d-11ed-9f84-dc5360426ab2/claim?userId=chalika_digiratina&traceId=TRC123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"api",
+						"approval-process-claim",
+						"040e84f0-709d-11ed-9f84-dc5360426ab2",
+						"claim"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "chalika_digiratina"
+						},
+						{
+							"key": "traceId",
+							"value": "TRC123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete Task API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/api/approval-process-complete/52d38a07-7090-11ed-9f84-dc5360426ab2/complete?traceId=TRC1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"api",
+						"approval-process-complete",
+						"52d38a07-7090-11ed-9f84-dc5360426ab2",
+						"complete"
+					],
+					"query": [
+						{
+							"key": "traceId",
+							"value": "TRC1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QuestionFlow API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/freelance/completeQuestion?question-number=9&answer=Abstraction&task-id=022e3d51-75d2-11ed-a282-dc5360426ab2&processId=3030&type=coding&user-name=keshan_9090",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"freelance",
+						"completeQuestion"
+					],
+					"query": [
+						{
+							"key": "question-number",
+							"value": "9"
+						},
+						{
+							"key": "answer",
+							"value": "Abstraction"
+						},
+						{
+							"key": "task-id",
+							"value": "022e3d51-75d2-11ed-a282-dc5360426ab2"
+						},
+						{
+							"key": "processId",
+							"value": "3030"
+						},
+						{
+							"key": "type",
+							"value": "coding"
+						},
+						{
+							"key": "user-name",
+							"value": "keshan_9090"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserProfileUpload API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/freelance/registerApplicant/key/FreelancerHiringProcess?user-name=andrew&user-email=andrew@gmail.com&preferred-language=Java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"freelance",
+						"registerApplicant",
+						"key",
+						"FreelancerHiringProcess"
+					],
+					"query": [
+						{
+							"key": "user-name",
+							"value": "andrew"
+						},
+						{
+							"key": "user-email",
+							"value": "andrew@gmail.com"
+						},
+						{
+							"key": "preferred-language",
+							"value": "Java"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssessorComplete API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"applicantStatus\": \"REJECTED\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/freelance/updateApplicantStatus/taskId/4b59edd3-75d2-11ed-a282-dc5360426ab2/processId/3030?registerUser=keshan_9090&applicantStatus=Rejected",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"freelance",
+						"updateApplicantStatus",
+						"taskId",
+						"4b59edd3-75d2-11ed-a282-dc5360426ab2",
+						"processId",
+						"3030"
+					],
+					"query": [
+						{
+							"key": "registerUser",
+							"value": "keshan_9090"
+						},
+						{
+							"key": "applicantStatus",
+							"value": "Rejected"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FinalUserEvaluation API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8052/demo-poc/freelance/getResults/registerUser/keshan_9090/processId/3030",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8052",
+					"path": [
+						"demo-poc",
+						"freelance",
+						"getResults",
+						"registerUser",
+						"keshan_9090",
+						"processId",
+						"3030"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
