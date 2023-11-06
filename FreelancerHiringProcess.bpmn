@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_98e9d208-e248-4985-9efe-dc3ee41bbe17" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="FreelancerHiringProcess" isExecutable="true">
+    <startEvent id="startEvent_29c7e1ed-df28-4c85-b634-680e318e832b">
+      <outgoing>sequenceFlow_0461a5ea-c6c6-4aa1-87d3-d72cfa877433</outgoing>
+    </startEvent>
+    <userTask camunda:assignee="[Layanperera, KeshanChathuranda, NaminSaranga, ChalikaMihiran]" id="id123" name="User Profile Upload">
+      <incoming>sequenceFlow_0461a5ea-c6c6-4aa1-87d3-d72cfa877433</incoming>
+      <outgoing>sequenceFlow_d2055e9d-72b8-4011-94ab-0d048a41aaf9</outgoing>
+    </userTask>
+    <sequenceFlow id="sequenceFlow_0461a5ea-c6c6-4aa1-87d3-d72cfa877433" sourceRef="startEvent_29c7e1ed-df28-4c85-b634-680e318e832b" targetRef="id123"/>
+    <userTask id="Algorithm" name="Algorithm_Quiz">
+      <incoming>sequenceFlow_d2055e9d-72b8-4011-94ab-0d048a41aaf9</incoming>
+      <outgoing>sequenceFlow_0e706d78-d3d2-48f2-aa29-95787734447e</outgoing>
+    </userTask>
+    <sequenceFlow id="sequenceFlow_d2055e9d-72b8-4011-94ab-0d048a41aaf9" sourceRef="id123" targetRef="Algorithm"/>
+    <userTask id="MCQ" name="MCQ_Quiz">
+      <extensionElements>
+        <camunda:failedJobRetryTimeCycle/>
+      </extensionElements>
+      <incoming>sequenceFlow_0e706d78-d3d2-48f2-aa29-95787734447e</incoming>
+      <outgoing>sequenceFlow_1d8f7585-2a9d-4930-b446-6751f41246d3</outgoing>
+    </userTask>
+    <sequenceFlow id="sequenceFlow_0e706d78-d3d2-48f2-aa29-95787734447e" sourceRef="Algorithm" targetRef="MCQ"/>
+    <userTask id="Coding" name="Coding_Quiz">
+      <incoming>sequenceFlow_1d8f7585-2a9d-4930-b446-6751f41246d3</incoming>
+      <outgoing>sequenceFlow_5c5686f8-3e5b-4699-b277-3402bb34dc7c</outgoing>
+    </userTask>
+    <sequenceFlow id="sequenceFlow_1d8f7585-2a9d-4930-b446-6751f41246d3" sourceRef="MCQ" targetRef="Coding"/>
+    <userTask id="Assessor" name="Assessor">
+      <incoming>sequenceFlow_5c5686f8-3e5b-4699-b277-3402bb34dc7c</incoming>
+      <outgoing>sequenceFlow_a82e4d2a-b950-4e35-ba67-a899c28f79e2</outgoing>
+    </userTask>
+    <sequenceFlow id="sequenceFlow_5c5686f8-3e5b-4699-b277-3402bb34dc7c" sourceRef="Coding" targetRef="Assessor"/>
+    <endEvent id="endEvent_31de10f3-001a-4a25-963b-f51fd86a3977">
+      <incoming>sequenceFlow_a82e4d2a-b950-4e35-ba67-a899c28f79e2</incoming>
+    </endEvent>
+    <sequenceFlow id="sequenceFlow_a82e4d2a-b950-4e35-ba67-a899c28f79e2" sourceRef="Assessor" targetRef="endEvent_31de10f3-001a-4a25-963b-f51fd86a3977"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_c1503b60-d1d3-499a-8e6d-93a9bfe6263b">
+    <bpmndi:BPMNPlane bpmnElement="FreelancerHiringProcess" id="BPMNPlane_e3d2639d-4048-4050-95b4-30dadb63fe13">
+      <bpmndi:BPMNShape bpmnElement="startEvent_29c7e1ed-df28-4c85-b634-680e318e832b" id="BPMNShape_6a9f3cdb-9cac-4aa0-bdee-dceeaf628187">
+        <dc:Bounds height="36.0" width="36.0" x="100.0" y="100.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="id123" id="BPMNShape_9046841f-a1ef-42dd-89d6-8a10d77c8396">
+        <dc:Bounds height="80.0" width="100.0" x="186.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_0461a5ea-c6c6-4aa1-87d3-d72cfa877433" id="BPMNEdge_e34aac7d-cef5-4306-a7eb-ae88ad4c1201">
+        <di:waypoint x="136.0" y="118.0"/>
+        <di:waypoint x="186.0" y="118.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Algorithm" id="BPMNShape_b32edcb3-1570-4442-94ab-398093056ea0">
+        <dc:Bounds height="80.0" width="100.0" x="336.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_d2055e9d-72b8-4011-94ab-0d048a41aaf9" id="BPMNEdge_d7b05a76-6367-4d32-afb1-b42e7f0b5836">
+        <di:waypoint x="286.0" y="118.0"/>
+        <di:waypoint x="336.0" y="118.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="MCQ" id="BPMNShape_a5cdf18b-c7c0-4780-9095-05d3c8db280b">
+        <dc:Bounds height="80.0" width="100.0" x="486.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_0e706d78-d3d2-48f2-aa29-95787734447e" id="BPMNEdge_0b0dc6db-d60b-4395-bcdb-b7e2a995123e">
+        <di:waypoint x="436.0" y="118.0"/>
+        <di:waypoint x="486.0" y="118.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Coding" id="BPMNShape_091a1ca7-3bb5-4b70-9744-203bed0b705f">
+        <dc:Bounds height="80.0" width="100.0" x="636.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_1d8f7585-2a9d-4930-b446-6751f41246d3" id="BPMNEdge_12cfce84-a5f6-4f12-8494-df630a764745">
+        <di:waypoint x="586.0" y="118.0"/>
+        <di:waypoint x="636.0" y="118.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="Assessor" id="BPMNShape_9bcdb5b7-024d-4248-b6f3-ecf307c5e031">
+        <dc:Bounds height="80.0" width="100.0" x="786.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_5c5686f8-3e5b-4699-b277-3402bb34dc7c" id="BPMNEdge_332e65f9-83d7-4108-8400-0775c17492eb">
+        <di:waypoint x="736.0" y="118.0"/>
+        <di:waypoint x="786.0" y="118.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="endEvent_31de10f3-001a-4a25-963b-f51fd86a3977" id="BPMNShape_b1ba57e1-934d-4198-aa96-4130e6d9fdf2">
+        <dc:Bounds height="36.0" width="36.0" x="936.0" y="100.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sequenceFlow_a82e4d2a-b950-4e35-ba67-a899c28f79e2" id="BPMNEdge_30bd08e8-12e5-449e-a494-f4869be7bb6d">
+        <di:waypoint x="886.0" y="118.0"/>
+        <di:waypoint x="936.0" y="118.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
